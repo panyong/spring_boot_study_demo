@@ -1,12 +1,8 @@
 package com.rambo.demo;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-
-import java.util.Arrays;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * 主启动类，程序入口
@@ -16,6 +12,9 @@ import java.util.Arrays;
  * @author panyong
  */
 @SpringBootApplication
+//@EnableConfigurationProperties(value = {Student.class})//该注解声明了使用配置作为属性值的Bean，且将Bean纳入IoC容器管理；如果在POJO上声明了@Component则不需要改注解
+//指定导入的非默认配置文件
+@PropertySource(value = {"classpath:config-test.properties"}, encoding = "UTF-8")
 public class SpringBootStudyDemoApplication {
 
 	public static void main(String[] args) {
@@ -24,7 +23,7 @@ public class SpringBootStudyDemoApplication {
 	}
 
 	//声明一个bean交给spring的IOC管理，注解式Bean代替xml，一般在每个相应的配置类中进行Bean的声明
-	@Bean
+	/*@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx){
 		return args -> {
 			System.out.println("Let's inspect the beans provided by Spring Boot:");
@@ -35,6 +34,6 @@ public class SpringBootStudyDemoApplication {
 				System.out.println(beanName);
 			}
 		};
-	}
+	}*/
 
 }
