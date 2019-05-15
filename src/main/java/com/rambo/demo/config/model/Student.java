@@ -25,7 +25,7 @@ public class Student {
     private Integer num;
 
     public Student() {
-        System.out.println("IoC期间---无参构造器被调用");
+        System.out.println("Student ApplicationContext初始化bean期间---无参构造器被调用");
     }
 
     public Student(String name, Integer sex, Integer age, List<String> hobbies, Integer num) {
@@ -34,46 +34,6 @@ public class Student {
         this.age = age;
         this.hobbies = hobbies;
         this.num = num;
-        System.out.println("IoC期间---全参构造器被调用");
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getSex() {
-        return sex;
-    }
-
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public List<String> getHobbies() {
-        return hobbies;
-    }
-
-    public void setHobbies(List<String> hobbies) {
-        this.hobbies = hobbies;
-    }
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
+        System.out.println("Student ApplicationContext初始化bean期间---全参构造器被调用");
     }
 }

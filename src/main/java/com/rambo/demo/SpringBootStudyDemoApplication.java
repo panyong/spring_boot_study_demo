@@ -2,6 +2,7 @@ package com.rambo.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
 /**
@@ -12,15 +13,52 @@ import org.springframework.context.annotation.PropertySource;
  * @author panyong
  */
 @SpringBootApplication
-//@EnableConfigurationProperties(value = {Student.class})//该注解声明了使用配置作为属性值的Bean，且将Bean纳入IoC容器管理；如果在POJO上声明了@Component则不需要改注解
-//指定导入的非默认配置文件
+//@EnableConfigurationProperties(value = {Student.class})//该注解声明了使用配置作为属性值的Bean，且将Bean纳入IoC容器管理；如果在POJO上声明了@Component则不需要该注解
+//指定导入的非默认配置文件，可以设置字符编码
 @PropertySource(value = {"classpath:config-test.properties"}, encoding = "UTF-8")
+@ServletComponentScan//指示启动时进行Servlet的bean扫描注册
 public class SpringBootStudyDemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootStudyDemoApplication.class, args);
 		System.out.println("============SpringBootStudyDemoApplication run successful============");
 	}
+
+
+	/*@Bean
+	//多个Filter，则注册多个FilterRegistrationBean，在每个对象里设置Filter、name和order
+	public FilterRegistrationBean customFilterBean(){
+		FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+		registrationBean.setFilter(customFilter());
+		registrationBean.setName("customFilter");
+		registrationBean.addUrlPatterns("/*");
+		registrationBean.setOrder(10);
+		return registrationBean;
+	}
+
+	@Bean
+	public FilterRegistrationBean authFilterBean(){
+		FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+		registrationBean.setFilter(authFilter());
+		registrationBean.setName("authFilter");
+		registrationBean.addUrlPatterns("/*");
+		registrationBean.setOrder(20);
+		return registrationBean;
+	}*/
+
+	/**
+	 * 这种初始化Bean的方式和@WebFilter类似，只不过将由Spring初始化的工作变成了程序员手动初始化，初始化后都是交给Spring的容器进行管理
+	 * 这时候可以将Filter类上的@WebFilter和启动类上的@ServletComponentScan去掉
+	 * @return
+	 */
+	/*@Bean
+	public CustomFilter customFilter(){
+		return new CustomFilter();
+	}
+	@Bean
+	public AuthFilter authFilter(){
+		return new AuthFilter();
+	}*/
 
 	//声明一个bean交给spring的IOC管理，注解式Bean代替xml，一般在每个相应的配置类中进行Bean的声明
 	/*@Bean
