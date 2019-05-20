@@ -27,8 +27,8 @@ HELP.md
 
 ### VS Code ###
 .vscode/
-/*.log
-/my.log.*.gz
-/mvnw.cmd
-/.mvn/
-/mvnw
+*.log
+my.log.*.gz
+mvnw.cmd
+.mvn/
+mvnw
