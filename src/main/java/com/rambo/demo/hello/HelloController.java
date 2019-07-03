@@ -1,10 +1,15 @@
 package com.rambo.demo.hello;
 
+import com.rambo.demo.base.exceptionhandler.exceptions.CommonException;
+import com.rambo.demo.base.response.BaseResult;
+import com.rambo.demo.base.response.BaseResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Random;
 
 /**
  * User: za-panyong
@@ -26,7 +31,20 @@ public class HelloController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String hello(){
-        return "Hello SpringBoot!" + value;
+    public BaseResult<String> hello() throws Exception {
+        Random random = new Random();
+        int randomVal = random.nextInt(2);
+
+        switch (randomVal){
+            case 0:
+                throw new Exception("抛出Exception");
+//                break;
+            case 1:
+                throw new CommonException("抛出CommonException");
+//                break;
+        }
+
+        return BaseResultUtils.ok("Hello SpringBoot!");
+
     }
 }
