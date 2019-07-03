@@ -7,8 +7,8 @@ package com.rambo.demo.base.response;
  */
 public enum  BaseErrorEnum {
     SYSTEM_ERROR(20500,"系统错误"),
-    COMMON_ERROR(20501,"通用错误")
-
+    COMMON_ERROR(20501,"通用错误"),
+    PARAMS_ERROR(20502,"参数错误"),
     ;
 
 

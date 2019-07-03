@@ -25,4 +25,10 @@ public class BaseResultUtils {
         BaseResult baseResult = new BaseResult(errorEnum);
         return baseResult;
     }
+
+    public static BaseResult error(BaseErrorEnum paramsError, String message) {
+        BaseResult baseResult = error(paramsError);
+        baseResult.setMsg(message);
+        return baseResult;
+    }
 }
