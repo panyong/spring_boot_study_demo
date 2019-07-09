@@ -43,6 +43,36 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+		<!-- mybatis-plus 是mybais的增强工具，简化了CRUD操作提供了 代码生成器、条件构造器 -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>3.1.2</version>
+		</dependency>
+		<!--目前看来，引入start后不需要该jar-->
+		<!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus -->
+		<!--<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus</artifactId>
+			<version>3.1.2</version>
+		</dependency>-->
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!--阿里巴巴的德鲁伊：数据库线程池管理器-->
+		<!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.18</version>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>

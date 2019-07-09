@@ -1,5 +1,6 @@
 package com.rambo.demo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -15,8 +16,9 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 //@EnableConfigurationProperties(value = {Student.class})//该注解声明了使用配置作为属性值的Bean，且将Bean纳入IoC容器管理；如果在POJO上声明了@Component则不需要该注解
 //指定导入的非默认配置文件，可以设置字符编码
-@PropertySource(value = {"classpath:config-test.properties"}, encoding = "UTF-8")
+//@PropertySource(value = {"classpath:config-test.properties"}, encoding = "UTF-8")
 @ServletComponentScan//指示启动时进行Servlet的bean扫描注册
+@MapperScan("com.rambo.demo.server.mapper")
 public class SpringBootStudyDemoApplication {
 
 	public static void main(String[] args) {
